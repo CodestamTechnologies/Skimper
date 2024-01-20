@@ -82,7 +82,7 @@ def main():
                 print (city)
                 
 
-                browser = p.chromium.launch(headless=False)
+                browser = p.chromium.launch(headless=True)
                 page = browser.new_page()
 
                 page.goto("https://www.google.com/maps", timeout=60000)
@@ -227,6 +227,6 @@ if __name__ == "__main__":
     if args.total:
         total = args.total
     else:
-        total = 5
+        total = 1000
 
     main()
