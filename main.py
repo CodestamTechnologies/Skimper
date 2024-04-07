@@ -220,7 +220,7 @@ if __name__ == "__main__":
     else:
         # in case no arguments passed
         # the scraper will search by defaut for:
-        search_for = "Coaching "
+        search_for = "keyword"
 
 
     # total number of products to scrape. Default is 5000
