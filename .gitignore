@@ -1,5 +1,9 @@
 *.csv
 *.xlsx
-*extracted_emails.txt
-*formatted_numbers.txt
-*Data/
+
+
+# Ignore all .txt files
+*.txt
+
+# But do not ignore requirements.txt
+!requirements.txt
