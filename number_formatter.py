@@ -20,7 +20,7 @@ def format_phone_numbers(numbers):
 
 # Read numbers from CSV file
 numbers = []
-with open("Tatoo_studio.csv", newline='') as csvfile:
+with open("coaching_india.csv", newline='') as csvfile:
     reader = csv.reader(csvfile)
     for row in reader:
         numbers.extend(row)
