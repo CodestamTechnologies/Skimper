@@ -80,8 +80,18 @@ def main():
             cities = f.readlines()  # Read all lines
 
             for city in cities:
+                city = city 
+                # If scraping is successful, remove the city from the list
+                try:
+                    cities.remove(city)
+                except ValueError:
+                    pass
+                f.seek(0)  # Move cursor to the beginning of the file
+                f.writelines(cities)  # Write the modified list back to the file
+                print(".")
                 city = city.strip()  # Strip to remove leading/trailing whitespace and newline
                 print(city)
+                
 
                 browser = p.chromium.launch(headless=True)
                 page = browser.new_page()
@@ -99,7 +109,7 @@ def main():
                     # page.wait_for_timeout(5000)
 
                     # scrolling
-                    page.hover('//a[contains(@href, "https://www.google.com/maps/place")]')
+                    page.hover('//a[contains(@href, "https://www.google.com/maps/place")]', timeout=5000)
 
                     # this variable is used to detect if the bot
                     # scraped the same number of listings in the previous iteration
@@ -186,11 +196,6 @@ def main():
                     # saving to both excel and csv just to showcase the features.
                     business_list.save_to_excel("google_maps_data")
                     business_list.save_to_csv("google_maps_data")
-
-                    # If scraping is successful, remove the city from the list
-                    cities.remove(city)
-                    f.seek(0)  # Move cursor to the beginning of the file
-                    f.writelines(cities)  # Write the modified list back to the file
 
                 except TimeoutError:
                     print(f"Timeout error occurred for {city}. Skipping...")
