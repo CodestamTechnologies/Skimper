@@ -200,7 +200,6 @@ def main():
                 except TimeoutError:
                     print(f"Timeout error occurred for {city}. Skipping...")
                     # If timeout occurs, append the city to the end of the file
-                    f.write(city + '\n')
                     browser.close()
                     continue
 
@@ -230,4 +229,8 @@ if __name__ == "__main__":
     else:
         total = 1000
 
-    main()
+    while True:
+        try:
+            main()
+        except:
+            pass
